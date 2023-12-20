@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>上巳节的来历和传说</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+      html,body{
+	    width:100%;
+      	height:100%;
+      	margin:0px;
+      	overflow:hidden;
+      }
+      #mainDiv{
+      	position:relative;
+      	left:0px;
+      	top:0px;
+      	
+	    width:100%;
+      	height:100%;
+      	
+      	transition:all 1s ease;
+      }
+      #mainDiv div{
+	   		width:100%;
+      	height:100%;      	
+      	background-repeat:no-repeat;
+      	background-position:center;
+      	background-size:cover;
+      }
+      .page1{
+	    background-image:url("res/11.jpg");
+      }
+      .page2{
+	    background-image:url("res/12.jpg");
+      }
+      .page3{
+	    background-image:url("res/13.jpg");
+      }
+      .page4{
+	    background-image:url("res/14.jpg");
+      }
+	  .page5{
+		background-image:url("res/15.jpg");
+	  }
+	  .page6{
+	  	background-image:url("res/16.jpg");
+	  }
+      .btn_list{
+	    	position:fixed;
+      	top:30%;
+      	right:50px;
+      }
+      ul{
+	    list-style-type:none;
+      }
+      li{
+	    width:20px;
+      	height:20px;
+      	margin-top:10px;
+      	border-radius:20px;
+      	background-color:#3D3D3D;
+      	cursor:pointer;
+      }
+      #li0{
+	    background-color:#10508D;
+      }
+      p{
+      	position:fixed;
+      	bottom:30px;
+      	width:100%;
+      	text-align: center;
+      }
+      p a{
+      	color:#FFF;
+      	text-decoration: none;
+      }
+    </style>
+    <script type="text/javascript">
+      var index = 0;//当前显示第几屏。0代表第1屏
+      
+      window.onload = function(){
+    	  
+    	  //为li添加鼠标点击事件
+    	  for(var i=0;i<=6;i++){
+    		  document.getElementById("li"+i).onclick = function(){
+    			  
+    			  index = this.id.replace("li","");//通过id获取当前显示第几屏
+    			  
+    			  pageAnimate();
+    		  }
+    	  }
+    	  
+    	  //窗口大小重置
+    	  window.onresize = function(){
+    		  //暂时去掉mainDiv的过渡动画
+    		  document.getElementById("mainDiv").style.transition = "all 0s ease";
+    		  
+    		  pageAnimate();//切屏
+    		  
+    		  //重新加上mainDiv的过渡动画
+    		  window.setTimeout(function(){
+				  document.getElementById("mainDiv").style.transition = "all 1s ease";
+			  },10);
+    	  }
+      }
+      //设置显示哪一屏，并设置右浮动按扭显示样式
+      function pageAnimate(){
+    	  
+    	  var offsetHeight = document.body.offsetHeight;
+    	  document.getElementById("mainDiv").style.top = -(offsetHeight * index)+"px";
+		  
+    	  //设置右则浮动按扭的显示样式
+		  for(var i=0;i<=6;i++){
+			  document.getElementById("li"+i).style.backgroundColor = "#3D3D3D";
+		  }
+		  document.getElementById("li"+index).style.backgroundColor = "#10508D";
+      }
+    </script>
+  </head>
+  <body>
+    
+    <div id="mainDiv">
+      <div class="page1"></div>
+      <div class="page2"></div>
+      <div class="page3"></div>
+      <div class="page4"></div>
+	  <div class="page5"></div>
+	  <div class="page6"></div>
+    </div>
+    
+    <div class="btn_list">
+      <ul>
+        <li id="li0"></li>
+        <li id="li1"></li>
+        <li id="li2"></li>
+        <li id="li3"></li>
+		<li id="li4"></li>
+		<li id="li5"></li>
+      </ul>
+    </div>
+     <p><a href="index.html">返回首页</a></p>    
+  </body>
+</html>
+
